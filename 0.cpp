@@ -55,16 +55,27 @@ class Store {
     }
 
     void addGame(){
+        string name;
+        label2:
         cout << "Enter game name: ";
         cin.ignore();
-        getline(cin, games[gameCount].name);
+        getline(cin, name);
+        for (int i = 0; i < gameCount; i++){
+            if (games[gameCount].name == name){
+                cout << "The name of game is repetition, Enter again" << endl;
+                cout << "-------------------------" << endl;
+                goto label2;
+            }
+        }
+        games[gameCount].name = name;
         cout << "Enter price: ";
         cin >> games[gameCount].price;
         label1:
         cout << "Enter stock: ";
         cin >> games[gameCount].stock;
         if (games[gameCount].stock <= 0){
-            cout << "Enter valid stock(positive & notzero)" << endl;
+            cout << "Enter valid stock(positive & not zero)" << endl;
+            cout << "-------------------------" << endl;
             goto label1;
         }
         cout << "Enter category: ";
@@ -103,6 +114,81 @@ class Store {
             }
         }
         cout << "Game not found." << endl;
+    }
+
+    void editGame() {
+        int target_game, opr, opr2;
+        string name;
+
+        cin.ignore();
+        cout << "Enter game name: ";
+        getline(cin, name);
+        for (int i = 0; i < gameCount; i++) {
+            if (games[i].name == name) {
+                target_game = i;
+            }
+            else{
+                cout << "Game not found." << endl;
+                return;
+            }
+            cout << "Wich one do you want to edit ?" << endl;
+            cout << "1. name | 2. stock | 3. price | 4. category" << endl;
+            cin >> opr;
+            switch (opr)
+            {
+            case 1:
+                cout << "Enter new name: ";
+                cin.ignore();
+                getline(cin, name);
+                cin >> name;
+                games[target_game].name = name;
+                cout << "Name changed successfully.";
+                break;
+        
+            case 2:
+                cout << "1. charge game | 2. set again " << endl;
+                cin >> opr2;
+                switch (opr2)
+                {
+                case 1:
+                    cout << "Enter stock: ";
+                    cin >> opr;
+                    games[target_game].stock += opr;
+                    cout << "stock chanrged successfully.";
+                    break;
+                
+                case 2:
+                    cout << "Enter new stock: ";
+                    cin >> opr;
+                    games[target_game].stock = opr;
+                    cout << "stock changed successfully.";
+                    break;
+                
+                default:
+                    cout << "Invalid choice." << endl;
+                    break;
+                }
+                break;
+            
+            case 3:
+                cout << "Enter new price: ";
+                cin >> opr;
+                games[target_game].price = opr;
+                cout << "Price changed successfully.";
+                break;
+
+            case 4:
+                cout << "Enter new category: ";
+                cin >> name;
+                games[target_game].category = name;
+                cout << "Category changed successfully.";
+                break;
+
+            default:
+                cout << "Invalid choice." << endl;
+            }
+        }
+
     }
 
     void displayGames() {
@@ -211,7 +297,8 @@ class Store {
             cout << "6. Stock Status" << endl;
             cout << "7. Change Password" << endl;
             cout << "8. charge Wallet" << endl;
-            cout << "9. Exit" << endl;
+            cout << "9. edit games data" << endl;
+            cout << "10. Exit" << endl;
             cout << "-------------------------" << endl;
             cin >> option;
             switch (option) {
@@ -240,8 +327,13 @@ class Store {
                     chargeWallet("admin"); 
                     break;
                 case 9: 
+                    editGame();
+                    break;
+                case 10: 
                     return;
-                default: cout << "Invalid choice." << endl;
+                    
+                default: 
+                    cout << "Invalid choice." << endl;
             }
         }
     }
