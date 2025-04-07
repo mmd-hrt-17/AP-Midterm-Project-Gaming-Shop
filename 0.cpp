@@ -60,8 +60,13 @@ class Store {
         getline(cin, games[gameCount].name);
         cout << "Enter price: ";
         cin >> games[gameCount].price;
+        label1:
         cout << "Enter stock: ";
         cin >> games[gameCount].stock;
+        if (games[gameCount].stock <= 0){
+            cout << "Enter valid stock(positive & notzero)" << endl;
+            goto label1;
+        }
         cout << "Enter category: ";
         cin >> games[gameCount].category;
         gameCount++;
