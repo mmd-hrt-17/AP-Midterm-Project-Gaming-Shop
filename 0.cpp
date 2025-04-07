@@ -181,14 +181,6 @@ class Store {
         cout << "Total: " << sum << endl;
     }
 
-    void changePassword() {
-        cout << "Enter new password: ";
-        cin.ignore();
-        getline(cin, password);
-        cout << "Password changed." << endl;
-
-    }
-
     void adminMenu() {
         string pass;
         cout << "Enter admin password: ";
@@ -246,6 +238,14 @@ class Store {
         }
     }
 
+    void changePassword() {
+        cout << "Enter new password: ";
+        cin.ignore();
+        getline(cin, password);
+        cout << "Password changed." << endl;
+
+    }
+
     void customerMenu() {
         double cust_amount;
         int opr;
@@ -293,3 +293,31 @@ class Store {
         }
     }
 };
+
+int main() {
+
+    Store store;
+    int opr;
+    while (true) {
+        cout << "-------------------------" << endl;
+        cout << "Select access type:" << endl;
+        cout << "1. Adminstrator" << endl << "2. Customer" << endl << "3. Turn off" << endl;
+        cout << "-------------------------" << endl;
+        cin >> opr;
+        switch (opr) {
+            case 1: 
+                store.adminMenu(); 
+                break;
+
+            case 2: 
+                store.customerMenu(); 
+                break;
+
+            case 3: 
+                return 0;
+            
+                default: 
+                cout << "Invalid choice." << endl;
+        }
+    }
+}
