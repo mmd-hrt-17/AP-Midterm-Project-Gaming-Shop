@@ -55,31 +55,37 @@ class Store {
     }
 
     void addGame(){
-        string name;
+        string name, category;
+        double price, stock;
         label2:
         cout << "Enter game name: ";
         cin.ignore();
         getline(cin, name);
-        for (int i = 0; i < gameCount; i++){
-            if (games[gameCount].name == name){
-                cout << "The name of game is repetition, Enter again" << endl;
-                cout << "-------------------------" << endl;
-                goto label2;
-            }
-        }
-        games[gameCount].name = name;
         cout << "Enter price: ";
-        cin >> games[gameCount].price;
+        cin >> price;
         label1:
         cout << "Enter stock: ";
-        cin >> games[gameCount].stock;
-        if (games[gameCount].stock <= 0){
+        cin >> stock;
+        if (stock <= 0){
             cout << "Enter valid stock(positive & not zero)" << endl;
             cout << "-------------------------" << endl;
             goto label1;
         }
         cout << "Enter category: ";
-        cin >> games[gameCount].category;
+        cin >> category;
+        for (int i = 0; i <= gameCount; i++){
+            if ((games[gameCount].name == name)&&(games[gameCount].category == category)){
+                cout << "The entered game is repetition! " << endl;
+                cout << "-------------------------" << endl;
+                goto label2;
+            }
+            else{
+                games[gameCount].name = name;
+                games[gameCount].stock = stock;
+                games[gameCount].price = price;
+                games[gameCount].category = category;
+            }
+        }
         gameCount++;
         cout << "Game added successfully." << endl;
     }
@@ -119,7 +125,8 @@ class Store {
     void editGame() {
         int target_game, opr, opr2;
         string name;
-
+        displayGames();
+        cout << "-------------------------" << endl;
         cin.ignore();
         cout << "Enter game name: ";
         getline(cin, name);
@@ -142,7 +149,7 @@ class Store {
                 getline(cin, name);
                 cin >> name;
                 games[target_game].name = name;
-                cout << "Name changed successfully.";
+                cout << "Name changed successfully." << endl;
                 break;
         
             case 2:
@@ -154,14 +161,14 @@ class Store {
                     cout << "Enter stock: ";
                     cin >> opr;
                     games[target_game].stock += opr;
-                    cout << "stock chanrged successfully.";
+                    cout << "stock chanrged successfully." << endl;
                     break;
                 
                 case 2:
                     cout << "Enter new stock: ";
                     cin >> opr;
                     games[target_game].stock = opr;
-                    cout << "stock changed successfully.";
+                    cout << "stock changed successfully." << endl;
                     break;
                 
                 default:
@@ -174,7 +181,7 @@ class Store {
                 cout << "Enter new price: ";
                 cin >> opr;
                 games[target_game].price = opr;
-                cout << "Price changed successfully.";
+                cout << "Price changed successfully." << endl;
                 break;
 
             case 4:
