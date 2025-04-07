@@ -188,4 +188,108 @@ class Store {
         cout << "Password changed." << endl;
 
     }
+
+    void adminMenu() {
+        string pass;
+        cout << "Enter admin password: ";
+        cin >> pass;
+        if (pass != password) {
+            cout << "Incorrect password." << endl;
+            return;
+        }
+
+        int option;
+        while (true) {
+            cout << "-------------------------" << endl;
+            cout << "(Adminstrator menu)" << endl;
+            cout << "Total Credit: " << admin_wallet << endl;
+            cout << "1. Add Game" << endl;
+            cout << "2. Remove Game" << endl;
+            cout << "3. Search Game" << endl;
+            cout << "4. Display All Games" << endl;
+            cout << "5. Calculate Total Value" << endl;
+            cout << "6. Stock Status" << endl;
+            cout << "7. Change Password" << endl;
+            cout << "8. charge Wallet" << endl;
+            cout << "9. Exit" << endl;
+            cout << "-------------------------" << endl;
+            cin >> option;
+            switch (option) {
+                case 1: 
+                    addGame();
+                    break;
+                case 2: 
+                    removeGame(); 
+                    break;
+                case 3: 
+                    searchGame(); 
+                    break;
+                case 4: 
+                    displayGames(); 
+                    break;
+                case 5: 
+                    displayStockStatus(); 
+                    break;
+                case 6: 
+                    calculateTotalValue(); 
+                    break;
+                case 7: 
+                    changePassword(); 
+                    break;
+                case 8: 
+                    chargeWallet("admin"); 
+                    break;
+                case 9: 
+                    return;
+                default: cout << "Invalid choice." << endl;
+            }
+        }
+    }
+
+    void customerMenu() {
+        double cust_amount;
+        int opr;
+        while (true) {
+            cout << "-------------------------" << endl;
+            cout << "(Customer menu)" << endl;
+            cout << "Total Credit: " << cust_wallet << endl;
+            cout << "1. Search Game" << endl;
+            cout << "2. Display All Games" << endl;
+            cout << "3. Stock Status" << endl;
+            cout << "4. Charge Wallet" << endl;
+            cout << "5. Search By Category" << endl;
+            cout << "6. Buy Games" << endl;
+            cout << "7. Show Shopping Cart" << endl;
+            cout << "8. Exit" << endl;
+            cout << "-------------------------" << endl;
+            cin >> opr;
+            switch (opr) {
+                case 1: 
+                    searchGame(); 
+                    break;
+                case 2: 
+                    displayGames(); 
+                    break;
+                case 3: 
+                    displayStockStatus(); 
+                    break;
+                case 4: 
+                    chargeWallet("cust"); 
+                    break;
+                case 5: 
+                    showByCategory(); 
+                    break;
+                case 6: 
+                    buyGame(); 
+                    break;
+                case 7: 
+                    showCart(); 
+                    break;
+                case 8: 
+                    return;
+                default: 
+                    cout << "Invalid choice." << endl;
+            }
+        }
+    }
 };
