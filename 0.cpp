@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+//game class
 class Game {
     public:
         string name;
@@ -12,7 +12,8 @@ class Game {
         int stock;
         string category;
     };
-    
+
+//shopping cart class
 class CartItem {
     public:
         string name;
@@ -20,8 +21,10 @@ class CartItem {
         double fee;
     };
 
+//main store class & settings
 class Store {
 
+    //private data
     private:
     Game games[100];
     int gameCount = 0;
@@ -33,7 +36,7 @@ class Store {
 
     string password = "admin1admin";
     
-    //---------------------
+    //public data
     public:
     void chargeWallet(string rule) {
         double amount;
@@ -297,6 +300,7 @@ class Store {
 int main() {
 
     Store store;
+    
     int opr;
     while (true) {
         cout << "-------------------------" << endl;
