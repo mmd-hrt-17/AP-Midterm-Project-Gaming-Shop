@@ -1,48 +1,77 @@
-🎮 Game Store Management System (C++)
-AP midterm project - shahed university
-یک پروژه فروشگاه بازی نوشته‌شده با زبان C++ که به کمک شی‌گرایی (OOP) ساختار یافته. این سیستم به دو نقش اصلی ادمین و مشتری امکانات مختلفی ارائه می‌دهد؛ از مدیریت بازی‌ها گرفته تا خرید و پرداخت با کیف پول.
+**🎮 Game Store Management System (C++) /// AP midterm project - shahed university**
 
-✨ قابلیت‌ها
-🔐 برای ادمین:
-افزودن بازی جدید
-حذف بازی
-جستجوی بازی
-ویرایش اطلاعات بازی (نام، موجودی، قیمت، دسته‌بندی)
-نمایش تمام بازی‌ها
-مشاهده وضعیت موجودی‌ها
-محاسبه ارزش کل انبار
-تغییر رمز عبور ادمین
-شارژ کیف پول ادمین
+A console-based game store project built using C++ and Object-Oriented Programming (OOP). The system provides functionalities for both Admin and Customer roles, including game management, purchases, and wallet-based payments.
 
-🛒 برای مشتری:
-جستجوی بازی
-نمایش لیست بازی‌ها
-مشاهده وضعیت موجودی
-شارژ کیف پول مشتری
-فیلتر بازی‌ها بر اساس دسته‌بندی
-خرید بازی و اضافه‌کردن به سبد خرید
-نمایش سبد خرید
+---------------------------------------------------------
 
-💼 ساختار کلاس‌ها
-Game: اطلاعات هر بازی (نام، قیمت، موجودی، دسته‌بندی)
+✨ Features:
 
-CartItem: آیتم‌های موجود در سبد خرید مشتری
 
-Store: کلاس اصلی که منطق کامل سیستم فروشگاه را پیاده‌سازی کرده است
+🔐 Admin Capabilities:
 
-⚠️ نکات
-اطلاعات بازی‌ها در حافظه ذخیره می‌شود و بعد از بستن برنامه از بین می‌رود.
+- Add new games
 
-رمز پیش‌فرض برای ادمین: admin1admin
+- Remove existing games
 
-از دستورات goto برای بررسی تکراری‌بودن بازی استفاده شده که می‌تونه در آینده با لوپ‌ها یا توابع بهتر مدیریت بشه.
+- Search for a game
 
-📌 برنامه‌ریزی برای آینده (To-do)
-ذخیره اطلاعات روی فایل برای پایداری داده‌ها
+- Edit game details (name, stock, price, category)
 
-بهبود رابط کاربری با منوهای گرافیکی یا GUI
+- Display all available games
 
-افزودن سیستم لاگین/ثبت‌نام برای کاربران
+- Check stock status
 
-جایگزینی آرایه‌ها با std::vector برای مدیریت بهتر حافظه
+- Calculate total inventory value
 
+- Change admin password
+
+- Recharge admin wallet
+
+
+🛒 Customer Capabilities:
+
+- Search for a game
+
+- Display all games
+
+- Check stock status
+
+- Recharge customer wallet
+
+- Filter games by category
+
+- Purchase games and add to cart
+
+- View shopping cart
+
+---------------------------------------------------------
+
+💼 Class Structure :
+
+- Game: Stores game details such as name, price, stock, and category.
+
+- CartItem: Represents items added to the customer's shopping cart.
+
+- Store: The core class that implements all system functionalities.
+
+---------------------------------------------------------
+
+⚠️ Notes:
+
+- All data is stored in memory and will reset once the program closes.
+
+- Default admin password: admin1admin
+
+- goto statements are used for validation, but could be improved with cleaner loop/control structures.
+
+---------------------------------------------------------
+
+📌 Future Improvements (To-do):
+
+- Save/load data from files for persistence
+
+- Upgrade the interface using a GUI or graphical menus
+
+- Implement user registration and login system
+
+- Replace fixed-size arrays with std::vector for better memory management
